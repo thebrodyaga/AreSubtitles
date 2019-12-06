@@ -45,7 +45,7 @@ class SplashPresenter @Inject constructor(
 ) : BasePresenter<SplashView>() {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-
+        viewState.forward()
     }
 }
 
