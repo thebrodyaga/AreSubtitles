@@ -49,8 +49,8 @@ class AppActivity : BaseActivity() {
         if (BuildConfig.DEBUG)
             supportFragmentManager.registerFragmentLifecycleCallbacks(FragmentLifecycle(), true)
         setContentView(R.layout.layout_fragemnt_container)
-//        if (currentFragment == null)
-//            router.newRootScreen(Screens.MainScreen)
+        if (currentFragment == null)
+            router.newRootScreen(Screens.SubtitleScreen(1))
     }
 
     override fun onResumeFragments() {

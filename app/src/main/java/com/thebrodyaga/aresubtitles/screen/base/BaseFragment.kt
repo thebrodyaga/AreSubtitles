@@ -2,10 +2,13 @@ package com.thebrodyaga.aresubtitles.screen.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.thebrodyaga.aresubtitles.R
+import com.thebrodyaga.aresubtitles.navigation.Screens
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import moxy.MvpAppCompatFragment
@@ -45,5 +48,15 @@ abstract class BaseFragment : MvpAppCompatFragment(), GetRouter, Toolbar.OnMenuI
      */
     open fun onBackPressed() {
         getAnyRouter().exit()
+    }
+
+    override fun onMenuItemClick(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.settings -> {
+                getGlobalRouter().navigateTo(Screens.SettingsScreen)
+                true
+            }
+            else -> false
+        }
     }
 }

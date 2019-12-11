@@ -8,6 +8,7 @@ import com.thebrodyaga.aresubtitles.app.AppActivity
 import com.thebrodyaga.aresubtitles.app.SplashActivity
 import com.thebrodyaga.aresubtitles.di.modules.NavigationModule
 import com.thebrodyaga.aresubtitles.navigation.RouterTransition
+import com.thebrodyaga.aresubtitles.screen.fragments.settings.all.SettingsFragment
 import dagger.BindsInstance
 import dagger.Component
 import ru.terrakok.cicerone.NavigatorHolder
@@ -22,6 +23,7 @@ interface AppComponent {
     fun inject(activity: AppActivity)
     fun inject(activity: SplashActivity)
     fun getSettingManager(): SettingManager
+    fun inject(fragment: SettingsFragment)
 
     @Component.Builder
     interface Builder {

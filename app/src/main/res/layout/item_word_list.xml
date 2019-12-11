@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flexbox_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:alignContent="flex_start"
+    app:alignItems="flex_start"
+    app:flexWrap="wrap">
+
+</com.google.android.flexbox.FlexboxLayout>
