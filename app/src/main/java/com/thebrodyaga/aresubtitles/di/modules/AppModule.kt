@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.thebrodyaga.aresubtitles.repository.SubtitleRepository
+import com.thebrodyaga.aresubtitles.repository.impl.SubtitleRepositoryImpl
 import com.thebrodyaga.aresubtitles.tools.AudioPlayer
 import com.thebrodyaga.aresubtitles.tools.RecordVoice
 import com.thebrodyaga.aresubtitles.tools.SettingManager
@@ -44,5 +46,10 @@ class AppModule {
     @Singleton
     fun provideSetting(sharedPreferences: SharedPreferences): SettingManager =
         SettingManager(sharedPreferences)
+
+    @Provides
+    @Singleton
+    fun provideSubtitleRepository(): SubtitleRepository =
+        SubtitleRepositoryImpl()
 
 }

@@ -1,7 +1,7 @@
 package com.thebrodyaga.aresubtitles.navigation
 
 import androidx.fragment.app.Fragment
-import com.thebrodyaga.aresubtitles.screen.fragments.SubtitleFragment
+import com.thebrodyaga.aresubtitles.screen.fragments.subtitle.details.SubtitleFragment
 import com.thebrodyaga.aresubtitles.screen.fragments.settings.all.SettingsFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 

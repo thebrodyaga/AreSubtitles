@@ -3,7 +3,10 @@ package com.thebrodyaga.aresubtitles.screen.adapters.delegates.words
 import android.content.Context
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.widget.TextViewCompat
 import com.google.android.flexbox.FlexboxLayout
+import com.thebrodyaga.aresubtitles.R
+import com.thebrodyaga.aresubtitles.domine.entities.data.WordDto
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -11,7 +14,7 @@ class WordViewCash constructor(private val context: Context) {
     private val cash: MutableMap<Int, TextView> = mutableMapOf()
     private var freeIdForView = AtomicInteger(1)
 
-    fun getViews(words: List<String>): List<TextView> {
+    fun getViews(words: List<WordDto>): List<TextView> {
         val result = mutableListOf<TextView>()
         words.forEach {
             val textView = getAndRemoveViewFromCash()
@@ -37,8 +40,8 @@ class WordViewCash constructor(private val context: Context) {
         } ?: inflateView()
     }
 
-    private fun bindView(view: TextView, text: String) {
-        view.text = "View id = ${view.id} Item id = $text "
+    private fun bindView(view: TextView, text: WordDto) {
+        view.text = text.word
         Timber.i("bindView id = ${view.id}")
     }
 
@@ -47,6 +50,7 @@ class WordViewCash constructor(private val context: Context) {
             /*LayoutInflater.from(context)
             .inflate(R.layout.item_word, rootView, false) as TextView*/
             TextView(context)
+        TextViewCompat.setTextAppearance(view, R.style.BodyRegular)
         view.id = freeIdForView.getAndIncrement()
         view.layoutParams = FlexboxLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,

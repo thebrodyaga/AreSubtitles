@@ -8,10 +8,12 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 import com.thebrodyaga.aresubtitles.R
+import com.thebrodyaga.aresubtitles.domine.entities.data.LineDto
+import com.thebrodyaga.aresubtitles.domine.entities.data.SubtitleDto
 import kotlinx.android.synthetic.main.item_word_list.view.*
 
 class WordListDelegate :
-    AbsListItemAdapterDelegate<List<String>, Any, WordListDelegate.ViewHolder>() {
+    AbsListItemAdapterDelegate<LineDto, Any, WordListDelegate.ViewHolder>() {
     var viewCash: WordViewCash? = null
 
     override fun onCreateViewHolder(parent: ViewGroup) = ViewHolder(
@@ -20,10 +22,10 @@ class WordListDelegate :
     )
 
     override fun isForViewType(item: Any, items: MutableList<Any>, position: Int)
-            : Boolean = item is List<*>
+            : Boolean = item is LineDto
 
     override fun onBindViewHolder(
-        item: List<String>,
+        item: LineDto,
         holder: ViewHolder,
         payloads: MutableList<Any>
     ) = holder.bind(item)
@@ -38,11 +40,14 @@ class WordListDelegate :
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(any: List<String>): Unit = with(itemView) {
+
+        fun bind(lineDto: LineDto): Unit = with(itemView) {
             viewCash?.setToCash(flexbox_layout.children.filterIsInstance<TextView>())
             flexbox_layout.removeAllViewsInLayout()
-            val views = viewCash?.getViews(any)
+            val views = viewCash?.getViews(lineDto.words)
             views?.forEach { flexbox_layout.addView(it) }
+            val s = lineDto.start
+            time.text = String.format("%d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60))
         }
     }
 
